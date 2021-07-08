@@ -3070,7 +3070,7 @@ pgagroal_get_master_key(char** masterkey)
       }
       else
       {
-     fprintf(stderr, "just stat things\n");
+        fprintf(stderr, "just stat things %d %d %d\n", st.st_mode & S_IRWXU, st.st_mode & S_IRWXG, st.st_mode & S_IRWXO);
          goto error;
       }
    }
