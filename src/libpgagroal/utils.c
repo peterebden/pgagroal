@@ -33,7 +33,7 @@
 
 /* system */
 #include <ev.h>
-#ifdef HAVE_LINUX
+#ifdef HAVE_EXECINFO
 #include <execinfo.h>
 #endif
 #include <pwd.h>
@@ -797,7 +797,7 @@ pgagroal_set_proc_title(int argc, char** argv, char* s1, char *s2)
 int
 pgagroal_backtrace(void)
 {
-#ifdef HAVE_LINUX
+#ifdef HAVE_EXECINFO
    void* array[100];
    size_t size;
    char** strings;
