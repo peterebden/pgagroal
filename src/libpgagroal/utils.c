@@ -33,7 +33,9 @@
 
 /* system */
 #include <ev.h>
+#ifdef HAVE_LINUX
 #include <execinfo.h>
+#endif
 #include <pwd.h>
 #include <stdint.h>
 #include <stdio.h>
