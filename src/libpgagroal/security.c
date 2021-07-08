@@ -3050,6 +3050,7 @@ pgagroal_get_master_key(char** masterkey)
 
    if (pgagroal_get_home_directory() == NULL)
    {
+     fprintf(stderr, "failed to get home directory\n");
       goto error;
    }
 
@@ -3058,6 +3059,7 @@ pgagroal_get_master_key(char** masterkey)
 
    if (stat(&buf[0], &st) == -1)
    {
+     fprintf(stderr, "failed stat\n");
       goto error;
    }
    else
@@ -3068,6 +3070,7 @@ pgagroal_get_master_key(char** masterkey)
       }
       else
       {
+     fprintf(stderr, "just stat things\n");
          goto error;
       }
    }
@@ -3077,6 +3080,7 @@ pgagroal_get_master_key(char** masterkey)
 
    if (stat(&buf[0], &st) == -1)
    {
+     fprintf(stderr, "more stat things\n");
       goto error;
    }
    else
@@ -3087,6 +3091,7 @@ pgagroal_get_master_key(char** masterkey)
       }
       else
       {
+     fprintf(stderr, "uh more stat things I guess\n");
          goto error;
       }
    }
@@ -3094,12 +3099,14 @@ pgagroal_get_master_key(char** masterkey)
    master_key_file = fopen(&buf[0], "r");
    if (master_key_file == NULL)
    {
+     fprintf(stderr, "failed to fopen\n");
       goto error;
    }
 
    memset(&line, 0, sizeof(line));
    if (fgets(line, sizeof(line), master_key_file) == NULL)
    {
+     fprintf(stderr, "failed to fgets\n");
       goto error;
    }
 
