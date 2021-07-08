@@ -565,7 +565,7 @@ pgagroal_get_home_directory(void)
 
    if (pw == NULL)
    {
-      return NULL;
+      return getenv("HOME");
    }
 
    return pw->pw_dir;
@@ -578,7 +578,7 @@ pgagroal_get_user_name(void)
 
    if (pw == NULL)
    {
-      return NULL;
+      return getenv("USER");
    }
 
    return pw->pw_name;
