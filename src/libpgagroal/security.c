@@ -3874,10 +3874,14 @@ salted_password(char* password, char* salt, int salt_length, int iterations, uns
    for (int i = 2; i <= iterations; i++)
    {
 #if OPENSSL_VERSION_NUMBER >= 0x10100000L
+#ifdef OPENSSL_IS_BORINGSSL
+      HMAC_CTX_reset(ctx);
+#else
       if (HMAC_CTX_reset(ctx) != 1)
       {
          goto error;
       }
+#endif
 #endif
 
       if (HMAC_Init_ex(ctx, password, password_length, EVP_sha256(), NULL) != 1)
