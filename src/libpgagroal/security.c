@@ -40,6 +40,7 @@
 #include <utils.h>
 
 /* system */
+#include <errno.h>
 #include <stdatomic.h>
 #include <stdbool.h>
 #include <stdio.h>
